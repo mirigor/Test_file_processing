@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Обработка файла</title>
+    <style type="text/css">
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid #dddddd;
+            border-collapse: collapse;
+        }
+
+        table th {
+            font-weight: bold;
+            padding: 5px;
+            background: #efefef;
+            border: 1px solid #dddddd;
+        }
+
+        table td {
+            border: 1px solid #dddddd;
+            padding: 5px;
+        }
+
+        input {
+            width: 300px;
+            font-size: 13px;
+            padding: 6px 0 4px 10px;
+            border: 1px solid #cecece;
+            background: #F6F6f6;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 0 20px;
+            margin: 0 15px 15px 0;
+            border: none;
+            border-radius: 4px;
+            height: 32px;
+            line-height: 32px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            color: #fff;
+            background-color: #3775dd;
+            box-shadow: 0 2px #21487f;
+
+        }
+    </style>
+</head>
+<body>
+<br>
+<br>
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <input type="file" name="file" accept=".txt">
+    <button type="submit" value="send">Отправить</button>
+</form>
+<br>
+<br>
+<table>
+    <tr>
+        <th>Слово</th>
+        <th>Частота слова в тесте</th>
+        <th>Обратная частота документа</th>
+    </tr>
+    {% for word in info_about_words %}
+        <tr>
+            {% for i in word %}
+                <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
